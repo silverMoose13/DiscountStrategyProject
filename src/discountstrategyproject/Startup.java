@@ -9,13 +9,8 @@ package discountstrategyproject;
  *
  * @author agnas
  */
-public class DiscountStrategyProject {
-
-    /**
-     * @param args the command line arguments
-     */
+public class Startup {
     public static void main(String[] args) {
-        // TODO code application logic here
+        
     }
-    
 }
