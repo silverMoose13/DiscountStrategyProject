@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package discountstrategyproject;
 
 /**
@@ -12,9 +7,20 @@ package discountstrategyproject;
 public class ConsoleOutput implements OutputStrategy {
 
     @Override
-    public String displayReceipt() {
-        //Display to Console
+    public final String displayReceipt() {
+        //Display to Console. This method is currently in the receipt and needs to be 
+        //here instead
         return "";
+    }
+
+    @Override
+    public final void display(String message) {
+        if (message == null || message.isEmpty()) {
+            throw new IllegalArgumentException("Value must not be null or empty.");
+        }
+        else {
+        System.out.println(message + "\n");
+        }
     }
     
 }

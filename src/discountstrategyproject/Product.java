@@ -15,28 +15,41 @@ public class Product {
         this.discount = discount;
     }
 
-    public String getProductId() {
+    public final String getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public final void setProductId(String productId) {
+        if (productId == null || productId.isEmpty()) {
+            throw new IllegalArgumentException("Value must not be null or empty.");
+        } else {
         this.productId = productId;
+        }
     }
 
-    public String getProductName() {
+    public final String getProductName() {
         return productName;
     }
 
-    public void setProductName(String productName) {
+    public final void setProductName(String productName) {
+        if (productName == null || productName.isEmpty()) {
+            throw new IllegalArgumentException("Value must not be null or empty.");
+        } else {
         this.productName = productName;
+        }
     }
 
-    public double getRetailPrice() {
+    public final double getRetailPrice() {
         return retailPrice;
     }
 
-    public void setRetailPrice(double retailPrice) {
+    public final void setRetailPrice(double retailPrice) {
+        if (retailPrice <= 0 || retailPrice > 20000) {
+            throw new IllegalArgumentException("Value must not be less than or equal to 0. It may"
+                    + "also not be greater than 20000");
+        } else {
         this.retailPrice = retailPrice;
+        }
     }
     
     

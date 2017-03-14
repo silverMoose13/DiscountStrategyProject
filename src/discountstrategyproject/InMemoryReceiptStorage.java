@@ -7,7 +7,7 @@ package discountstrategyproject;
 public class InMemoryReceiptStorage implements ReceiptStorageStrategy {
 
     @Override
-    public void storeReceiptInformation() {
+    public final void storeReceiptInformation() {
        //this will store the receipt information in memory
     }
     

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package discountstrategyproject;
 
 /**
@@ -11,7 +6,9 @@ package discountstrategyproject;
  */
 public class FlatAmountDiscount implements DiscountStrategy{
 
-        //not sure if this is the method we want to go about this
+    //not sure if this is the method we want to go about this
+    //I'm almost thinking this should just be calculate discount amount
+    //refer to the tip calculator example for the variation here
     private String discountType;
 
     public final String getDiscountType() {
@@ -19,7 +16,11 @@ public class FlatAmountDiscount implements DiscountStrategy{
     }
 
     public final void setDiscountType(String discountType) {
+        if (discountType == null || discountType.isEmpty()) {
+            throw new IllegalArgumentException("Value must not be null or empty.");
+        } else {
         this.discountType = discountType;
+        }
     }
     
     @Override

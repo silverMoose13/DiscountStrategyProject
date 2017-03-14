@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package discountstrategyproject;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,9 +9,19 @@ package discountstrategyproject;
 public class GuiOutput implements OutputStrategy {
 
     @Override
-    public String displayReceipt() {
-        //display to GUI
+    public final String displayReceipt() {
+        //display to GUI. Currently this method is being written in the receipt
+        //class. Think if that is necessary or if it belongs here
         return "";
+    }
+
+    @Override
+    public final void display(String message) {
+        if (message == null || message.isEmpty()) {
+            throw new IllegalArgumentException("Value must not be null or empty.");
+        } else {
+        JOptionPane.showMessageDialog(null, message);
+        }
     }
     
 }

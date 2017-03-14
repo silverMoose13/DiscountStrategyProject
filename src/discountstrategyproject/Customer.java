@@ -14,14 +14,19 @@ public class Customer {
         this.customerId = customerId;
         this.customerName = customerName;
     }
+    
+    public Customer() {}
 
     public final String getCustomerId() {
         return customerId;
     }
 
     public final void setCustomerId(String customerId) {
-        //need validation
+        if (customerId == null || customerId.isEmpty()) {
+            throw new IllegalArgumentException("Value must not be null or empty.");
+        } else {
         this.customerId = customerId;
+        }
     }
 
     public final String getCustomerName() {
@@ -29,8 +34,11 @@ public class Customer {
     }
 
     public final void setCustomerName(String customerName) {
-        //need validation
+        if (customerName == null || customerName.isEmpty()) {
+            throw new IllegalArgumentException("Value must not be null or empty.");
+        } else {
         this.customerName = customerName;
+        }
     }
     
 }

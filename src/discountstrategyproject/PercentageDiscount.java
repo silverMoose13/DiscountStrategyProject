@@ -18,7 +18,11 @@ public class PercentageDiscount implements DiscountStrategy{
     }
 
     public final void setDiscountType(String discountType) {
+        if (discountType == null || discountType.isEmpty()) {
+            throw new IllegalArgumentException("Value must not be null or empty.");
+        } else {
         this.discountType = discountType;
+        }
     }
     
     @Override

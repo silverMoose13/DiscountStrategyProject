@@ -14,17 +14,22 @@ public class LineItem {
         //replace with the setter here?
         this.quantity = quantity;
     }
+    
+    public LineItem() {}
 
-    public int getQuantity() {
+    public final int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        //need validation
+    public final void setQuantity(int quantity) {
+        if (quantity <= 0 || quantity > 100) {
+            throw new IllegalArgumentException("Value must not be less than or equal to 0."
+                    + "It may also not be greater than 100.");
+        }
         this.quantity = quantity;
     }
     
-    public void calculateSubTotal() {
+    public final void calculateSubTotal() {
         //calculate without discount applied
         //product price * quantity
     }

@@ -6,25 +6,24 @@ package discountstrategyproject;
  */
 public class Receipt {
     
-    //do we want output strategy in here?
-    private OutputStrategy outputStrategy;
+    private ConsoleOutput consoleOutput = new ConsoleOutput();
     private Customer customer;
     private LineItem[] lineItem;
     private String receiptId;
     
-    public Receipt(OutputStrategy outputStrategy, Customer customer, LineItem[] lineItem) {
-        this.outputStrategy = outputStrategy;
-        this.customer = customer;
-        this.lineItem = lineItem;
-    }
+    //need constructor still
     
     public final String getReceiptId() {
         return receiptId;
     }
     
     public final void setReceiptId(String receiptId) {
-        //need validation
+        if (receiptId == null || receiptId.isEmpty()) {
+            throw new IllegalArgumentException("Value must not be null or empty.");
+        }
+        else {
         this.receiptId = receiptId;
+        }
     }
 
     public final void calculateNetTotal(double netTotal) {
@@ -46,25 +45,26 @@ public class Receipt {
     //this seems janky
     //JOptionPane("receipt stuff here")
     
-    public final String displayReceipt() {
-        String receipt = "";
+    //does this method need to get moved to the gui and console output classes?
+    public final void displayReceipt() {
+        consoleOutput.display("Thank you for shopping at Kohls \n");
+        //this line will pass in the customer that is linked to the ID in the database
+        //remember that this will be null if no match is found so have a quality
+        //in the method that will allow for that
+        consoleOutput.display("Sold to: \n");
+        //this value would be hardcoded I'd imagine in the startup class
+        consoleOutput.display("Receipt No.: \n\n");
+        consoleOutput.display("ID \tItem \tPrice \tQty \tSubtotal \tDiscount \n");
+        consoleOutput.display("------------------------------------------------------- \n");
+        //have a while loop here for the line items
+        consoleOutput.display("Line Item goes here");
+        consoleOutput.display("-------");
         
-        //append a bunch of strings together and line break them
-        //using the string formatter f
-        //+= Thank you for shopping at Kohls \n
-        //+= Sold to: Sally Jones \n
-        //+= Receipt No.: \n\n
-        //+= ID Item Price Qty Subtotal Discount \n
-        //+= ----------------------------------- \n
-        //+= line item
-        //+= line item
-        //+= as needed... \n\n
-        //+= -------
-        //+= Total Excluding Discount \n
-        //+= Total Savings \n
-        //+= Total Amount Due \n
-        
-        return receipt;
+        //these three lines will make use of the formatter (f) so that the values can be 
+        //rounded to the nearest decimal place. Convert these later
+        consoleOutput.display("Net Total: \n");
+        consoleOutput.display("Total Savings: \n");
+        consoleOutput.display("Amount Due: \n");
     }
     
     

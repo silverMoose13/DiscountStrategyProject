@@ -10,11 +10,11 @@ public class Startup {
         //think about what this class needs to do in order
         //to simulate the program
         /////////////////////////////////////////////////
-        
+        PointOfSaleTerminal posTerminal = new PointOfSaleTerminal();
         
         //add new receipt(create)
-        
-        
+        posTerminal.createNewReceipt("001");
+     
         //display a few prelim lines (welcome to kohls) (method will be in receipt)
         
         
@@ -30,7 +30,6 @@ public class Startup {
         
         //repeat this process again (since there are two receipts as needed
         //by the spec
-        
         
         
     }
