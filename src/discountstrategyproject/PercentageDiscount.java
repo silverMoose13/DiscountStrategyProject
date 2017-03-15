@@ -10,24 +10,15 @@ package discountstrategyproject;
  * @author Aaron
  */
 public class PercentageDiscount implements DiscountStrategy{
-
-    private String discountType;
-
-    public final String getDiscountType() {
-        return discountType;
-    }
-
-    public final void setDiscountType(String discountType) {
-        if (discountType == null || discountType.isEmpty()) {
-            throw new IllegalArgumentException("Value must not be null or empty.");
-        } else {
-        this.discountType = discountType;
-        }
-    }
     
+    private double percentageOff;
+
+    public PercentageDiscount(double percentOff){
+        //create constructor
+    }
     @Override
-    public final void calculateDiscountAmount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public final void calculateDiscountAmount(int qty, double price) {
+        //retailPrice * quantity * percentOff
     }
     
 }

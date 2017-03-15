@@ -10,5 +10,4 @@ package discountstrategyproject;
 public interface OutputStrategy {
     
     public abstract void display(String message);
-    public abstract String displayReceipt();
 }

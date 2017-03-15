@@ -11,9 +11,13 @@ public class Startup {
         //to simulate the program
         /////////////////////////////////////////////////
         PointOfSaleTerminal posTerminal = new PointOfSaleTerminal();
+        ReceiptDataAccessStrategy dataAccess = new InMemoryDataAccess();
         
-        //add new receipt(create)
-        posTerminal.createNewReceipt("001");
+        OutputStrategy outputOne = new ConsoleOutput();
+        OutputStrategy outputTwo = new GuiOutput();
+        
+        //add new receipt(create) need database here too
+        posTerminal.createNewReceipt("001", dataAccess);
      
         //display a few prelim lines (welcome to kohls) (method will be in receipt)
         
@@ -23,10 +27,10 @@ public class Startup {
         
         
         //display the GUI receipt
-        
+        //outputTwo
         
         //display the Console receipt
-        
+        //outputOne
         
         //repeat this process again (since there are two receipts as needed
         //by the spec

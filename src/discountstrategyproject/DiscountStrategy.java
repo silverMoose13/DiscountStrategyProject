@@ -6,6 +6,8 @@ package discountstrategyproject;
  */
 public interface DiscountStrategy {
     
-    public abstract void calculateDiscountAmount();
-    
+    //the purpose of this method is to calc the amount and return the discountAmount
+    public abstract void calculateDiscountAmount(int quantity, double retailPrice);
+
+    //will this come from the inMemoryDataAccess in the subclasses?
 }
