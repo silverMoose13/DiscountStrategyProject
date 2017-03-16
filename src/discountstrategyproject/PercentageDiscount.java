@@ -13,9 +13,18 @@ public class PercentageDiscount implements DiscountStrategy{
     
     private double percentageOff;
 
-    public PercentageDiscount(double percentOff){
-        //create constructor
+    public PercentageDiscount(double percentageOff){
+        this.percentageOff = percentageOff;
     }
+
+    public final double getPercentageOff() {
+        return percentageOff;
+    }
+
+    public final void setPercentageOff(double percentageOff) {
+        this.percentageOff = percentageOff;
+    }
+    
     @Override
     public final void calculateDiscountAmount(int qty, double price) {
         //retailPrice * quantity * percentOff

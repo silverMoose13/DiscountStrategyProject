@@ -7,9 +7,6 @@ package discountstrategyproject;
 public class Startup {
     public static void main(String[] args) {
         
-        //think about what this class needs to do in order
-        //to simulate the program
-        /////////////////////////////////////////////////
         PointOfSaleTerminal posTerminal = new PointOfSaleTerminal();
         ReceiptDataAccessStrategy dataAccess = new InMemoryDataAccess();
         
@@ -18,13 +15,10 @@ public class Startup {
         
         //add new receipt(create) need database here too
         posTerminal.createNewReceipt("001", dataAccess);
-     
-        //display a few prelim lines (welcome to kohls) (method will be in receipt)
         
-        
-        //display a line item (repeat as necessary foreach loop to cycle through
-        //the array one time
-        
+        //add a line item (repeat as necessary foreach loop to cycle through
+        //the array one time (productId and quantity are the params
+        //posTerminal.addLineItemToReceipt("10A", 1)
         
         //display the GUI receipt
         //outputTwo

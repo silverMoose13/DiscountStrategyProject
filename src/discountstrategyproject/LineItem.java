@@ -10,8 +10,6 @@ public class LineItem {
     private int quantity;
     
     public LineItem(Product product, int quantity) {
-        this.product = product;
-        //replace with the setter here?
         this.quantity = quantity;
     }
     
@@ -22,9 +20,8 @@ public class LineItem {
     }
 
     public final void setQuantity(int quantity) {
-        if (quantity <= 0 || quantity > 100) {
-            throw new IllegalArgumentException("Value must not be less than or equal to 0."
-                    + "It may also not be greater than 100.");
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("Value must not be less than or equal to 0.");
         }
         this.quantity = quantity;
     }

@@ -42,10 +42,9 @@ public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
         }
         Customer customer = null;
 
-        //rename the variable c
-        for (Customer c : customers) {
-            if (customerId.equals(c.getCustomerId())) {
-                customer = c;
+        for (Customer consumer : customers) {
+            if (customerId.equals(consumer.getCustomerId())) {
+                customer = consumer;
                 break;
             }
         }
@@ -62,10 +61,9 @@ public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
         }
         Product product = null;
 
-        //rename the variable p
-        for (Product p : products) {
-            if (productId.equals(p.getProductId())) {
-                product = p;
+        for (Product commercialGood : products) {
+            if (productId.equals(commercialGood.getProductId())) {
+                product = commercialGood;
                 break;
             }
         }

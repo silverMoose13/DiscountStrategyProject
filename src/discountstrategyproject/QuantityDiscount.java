@@ -6,6 +6,9 @@ package discountstrategyproject;
  */
 public class QuantityDiscount implements DiscountStrategy{
     
+    //struggling to formulate this class
+    
+    
     @Override
     public final void calculateDiscountAmount(int quantity, double retailPrice) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
