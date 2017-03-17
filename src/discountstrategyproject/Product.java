@@ -44,9 +44,8 @@ public class Product {
     }
 
     public final void setRetailPrice(double retailPrice) {
-        if (retailPrice <= 0 || retailPrice > 20000) {
-            throw new IllegalArgumentException("Value must not be less than or equal to 0. It may"
-                    + "also not be greater than 20000");
+        if (retailPrice <= 0) {
+            throw new IllegalArgumentException("Value must not be less than or equal to 0.");
         } else {
         this.retailPrice = retailPrice;
         }

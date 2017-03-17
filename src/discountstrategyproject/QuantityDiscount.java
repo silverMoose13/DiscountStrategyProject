@@ -6,12 +6,31 @@ package discountstrategyproject;
  */
 public class QuantityDiscount implements DiscountStrategy{
     
-    //struggling to formulate this class
-    
+    private double minimumQuantityNeededForDiscount;
+    private double percentageOff;
+
+    public QuantityDiscount(double minimumQuantityNeededForDiscount, double percentageOff) {
+        this.minimumQuantityNeededForDiscount = minimumQuantityNeededForDiscount;
+        this.percentageOff = percentageOff;
+    }
+
+    public double getMinimumQuantityNeededForDiscount() {
+        return minimumQuantityNeededForDiscount;
+    }
+
+    public void setMinimumQuantityNeededForDiscount(double minimumQuantityNeededForDiscount) {
+        this.minimumQuantityNeededForDiscount = minimumQuantityNeededForDiscount;
+    }
     
     @Override
-    public final void calculateDiscountAmount(int quantity, double retailPrice) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public final double getDiscountAmount(int quantity, double retailPrice) {
+        double discountAmount = 0;
+        
+        if (quantity >= minimumQuantityNeededForDiscount) {
+            discountAmount = quantity * retailPrice * percentageOff;
+        }
+        return discountAmount;
+        
     }
     
 }

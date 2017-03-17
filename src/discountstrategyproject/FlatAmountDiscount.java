@@ -21,9 +21,8 @@ public class FlatAmountDiscount implements DiscountStrategy{
     }
     
     @Override
-    public final void calculateDiscountAmount(int quantity, double retailPrice) {
-        //this will need to access the products array in the in memory data access class?
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public final double getDiscountAmount(int quantity, double retailPrice) {
+        return flatAmountOff;
     }
     
 }

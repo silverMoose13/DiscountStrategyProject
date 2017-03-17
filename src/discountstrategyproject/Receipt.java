@@ -7,11 +7,15 @@ package discountstrategyproject;
 public class Receipt {
     
     private ReceiptDataAccessStrategy receiptDataAccessStrategy;
+    private LineItem lineItem;
     private Customer customer;
     private String receiptId;
-    
-    public Receipt(String customerId, ReceiptDataAccessStrategy receiptDataAccessStrategy) {
-        //need constructor still
+
+    public Receipt(ReceiptDataAccessStrategy receiptDataAccessStrategy, LineItem lineItem, Customer customer, String receiptId) {
+        this.receiptDataAccessStrategy = receiptDataAccessStrategy;
+        this.lineItem = lineItem;
+        this.customer = customer;
+        this.receiptId = receiptId;
     }
     
     public final String getReceiptId() {
@@ -25,10 +29,6 @@ public class Receipt {
         else {
         this.receiptId = receiptId;
         }
-    }
-    
-    public final void addNewProductToReceipt() {
-        //make later
     }
     
     public final void addNewLineItemToReceipt() {

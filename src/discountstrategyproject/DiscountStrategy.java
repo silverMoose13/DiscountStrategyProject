@@ -9,7 +9,7 @@ package discountstrategyproject;
 //by the subclasses
 public interface DiscountStrategy {
     
-    public abstract void calculateDiscountAmount(int quantity, double retailPrice);
+    public double getDiscountAmount(int quantity, double retailPrice);
 
     //will this come from the inMemoryDataAccess in the subclasses?
 }

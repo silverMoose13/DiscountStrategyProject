@@ -18,10 +18,10 @@ public class Startup {
         
         //add a line item (repeat as necessary foreach loop to cycle through
         //the array one time (productId and quantity are the params
-        //posTerminal.addLineItemToReceipt("10A", 1)
+        posTerminal.addItemToReceipt("10A", 1);
         
         //display the GUI receipt
-        //outputTwo
+        posTerminal.closeoutReceipt();
         
         //display the Console receipt
         //outputOne

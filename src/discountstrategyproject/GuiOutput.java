@@ -17,4 +17,5 @@ public class GuiOutput implements OutputStrategy {
         }
     }
     
+    
 }

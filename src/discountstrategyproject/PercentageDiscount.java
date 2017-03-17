@@ -26,8 +26,8 @@ public class PercentageDiscount implements DiscountStrategy{
     }
     
     @Override
-    public final void calculateDiscountAmount(int qty, double price) {
-        //retailPrice * quantity * percentOff
+    public final double getDiscountAmount(int quantity, double retailPrice) {
+        return retailPrice * quantity * percentageOff;
     }
     
 }

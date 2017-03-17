@@ -25,9 +25,11 @@ public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
     //NoDiscount has no parameters
     private Product[] products = {
         new Product("10A", "Wisconsin Badgers Football Hat", 19.95, new NoDiscount()),
-        new Product("10B", "Men's Striped Socks", 6.95, new NoDiscount()),
-        new Product("10C", "Women's Watch", 108.95, new NoDiscount()),
-        new Product("10D", "Leather Wallet", 24.95, new NoDiscount()),
+        //Buy four get one free
+        new Product("10B", "Men's Striped Socks", 6.95, new QuantityDiscount(5, 0.20)),
+        //Clearance
+        new Product("10C", "Women's Watch", 108.95, new PercentageDiscount(0.60)),
+        new Product("10D", "Leather Wallet", 24.95, new FlatAmountDiscount(10)),
         new Product("10E", "King Size Pillow Case", 10.95, new NoDiscount())
     };
 

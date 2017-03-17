@@ -10,6 +10,7 @@ public class LineItem {
     private int quantity;
     
     public LineItem(Product product, int quantity) {
+        this.product = product;
         this.quantity = quantity;
     }
     
@@ -29,12 +30,13 @@ public class LineItem {
     public final void calculateSubTotal() {
         //calculate without discount applied
         //product price * quantity
+        
     }
     
-        //should there be a calculator class? Look at the calculate tip class
-    public final void calculateNetTotal(double netTotal) {
+    public final void calculateNetTotal() {
         //add the fields from the line item class? (all the subtotals added but 
         //no discount at this point)
+        
     }
 
     public final void calculateGrandTotal() {
