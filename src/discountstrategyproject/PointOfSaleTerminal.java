@@ -5,13 +5,13 @@ package discountstrategyproject;
  * @author Aaron
  */
 
-//this class needs some serious work into what it needs to do.
-//should many of the things in the receipt class go in here instead?
-
 //the job of this class is to facilitate the transaction:
 //1) creating the new receipt
 //2) modifying the receipt
 //3) signaling the end of the transaction by generating the final receipt in two dif output forms
+
+//Essentially this class needs to talk to the receipt class
+
 public class PointOfSaleTerminal {
     
     private Receipt receipt;
@@ -27,7 +27,7 @@ public class PointOfSaleTerminal {
         //receipt = new Receipt(customerId, dataAccess);
     }
     
-    //I'm confused here on how this should be called in startup
+    //Consider adding a formatStrategy for this receipt so that these aren't hardcoded in
     public final String closeoutReceipt() {
         //use the appended string values instead. The other way does not work well
         

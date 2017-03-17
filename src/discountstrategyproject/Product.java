@@ -4,6 +4,10 @@ package discountstrategyproject;
  *
  * @author Aaron
  */
+
+//the responsibility of this class is to set and retrieve product information
+
+
 public class Product {
     
     private DiscountStrategy discount;
@@ -21,7 +25,7 @@ public class Product {
 
     public final void setProductId(String productId) {
         if (productId == null || productId.isEmpty()) {
-            throw new IllegalArgumentException("Value must not be null or empty.");
+            throw new IllegalArgumentException("Product ID must not be null or empty.");
         } else {
         this.productId = productId;
         }
@@ -33,7 +37,7 @@ public class Product {
 
     public final void setProductName(String productName) {
         if (productName == null || productName.isEmpty()) {
-            throw new IllegalArgumentException("Value must not be null or empty.");
+            throw new IllegalArgumentException("Product name must not be null or empty.");
         } else {
         this.productName = productName;
         }
@@ -45,7 +49,7 @@ public class Product {
 
     public final void setRetailPrice(double retailPrice) {
         if (retailPrice <= 0) {
-            throw new IllegalArgumentException("Value must not be less than or equal to 0.");
+            throw new IllegalArgumentException("Retail price must not be less than or equal to $0.00.");
         } else {
         this.retailPrice = retailPrice;
         }

@@ -4,6 +4,14 @@ package discountstrategyproject;
  *
  * @author Aaron
  */
+
+//the responsibility of this class is to get the line item information
+//and add it to the receipt
+
+//in order to obtain that information is has to do the following
+
+//Line item class (this will get the line item information ID, Item, Price, Qty, Subtotal, Discount
+
 public class Receipt {
     
     private ReceiptDataAccessStrategy receiptDataAccessStrategy;
