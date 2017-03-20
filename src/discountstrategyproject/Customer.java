@@ -38,8 +38,9 @@ public class Customer {
     }
 
     public final void setCustomerName(String customerName) {
-        if (customerName == null || customerName.isEmpty()) {
-            throw new IllegalArgumentException("Customer name must not be null or empty.");
+        if (customerName == null || customerName.length() == 0) {
+            throw new IllegalArgumentException("Customer name must not be null or have a "
+                    + "length of 0 characters.");
         } else {
         this.customerName = customerName;
         }

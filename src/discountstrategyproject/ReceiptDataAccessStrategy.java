@@ -9,7 +9,7 @@ package discountstrategyproject;
 //can vary. This example only has one way of retrieving data (in memory)
 public interface ReceiptDataAccessStrategy {
     
-    public abstract Customer getCustomerInformation(final String customerId);
-    public abstract Product getProductInformation(final String productId);
+    public abstract Customer findCustomer(final String customerId);
+    public abstract Product findProduct(final String productId);
     
 }

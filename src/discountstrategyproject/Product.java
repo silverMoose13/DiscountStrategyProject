@@ -24,8 +24,9 @@ public class Product {
     }
 
     public final void setProductId(String productId) {
-        if (productId == null || productId.isEmpty()) {
-            throw new IllegalArgumentException("Product ID must not be null or empty.");
+        if (productId == null || productId.length() == 0) {
+            throw new IllegalArgumentException("Product ID must not be null or have a "
+                    + "length of 0 characters.");
         } else {
         this.productId = productId;
         }

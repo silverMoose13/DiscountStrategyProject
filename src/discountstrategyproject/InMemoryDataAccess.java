@@ -8,7 +8,8 @@ package discountstrategyproject;
 //the customer and product information. It is currently stored in memory
 public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
 
-    ConsoleOutput consoleOutput = new ConsoleOutput();
+    //for flexability we are calling the abstraction
+    OutputStrategy output = new ConsoleOutput();
 
     //set to private because we only want the database to have direct access to this info
     private Customer[] customers = {
@@ -36,10 +37,12 @@ public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
     //customerId is the unique value amongst customers
     //customer Id is final since this won't change
     @Override
-    public final Customer getCustomerInformation(final String customerId) {
+    public final Customer findCustomer(final String customerId) {
         //customer can pay cash or not be in the database which
         //is OK then it will be set as null.
-        if (customerId == null || customerId.isEmpty()) {
+        if (customerId == null || customerId.length() == 0) {
+            output.display("Customer Id must not be null or have a length of 0"
+                    + "characters.");
             return null;
         }
         Customer customer = null;
@@ -56,9 +59,10 @@ public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
     //productId is the unique value amongst products
     //productId is set to final since it won't change
     @Override
-    public final Product getProductInformation(final String productId) {
-        if (productId == null || productId.isEmpty()) {
-            consoleOutput.display("Product Id must not be null or empty.");
+    public final Product findProduct(final String productId) {
+        if (productId == null || productId.length() == 0) {
+            output.display("Product Id must not be null or have a length of 0"
+                    + "characters.");
             return null;
         }
         Product product = null;

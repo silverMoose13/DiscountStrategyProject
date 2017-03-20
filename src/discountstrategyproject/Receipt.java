@@ -14,16 +14,13 @@ package discountstrategyproject;
 
 public class Receipt {
     
-    private ReceiptDataAccessStrategy receiptDataAccessStrategy;
-    private LineItem lineItem;
+    private ReceiptDataAccessStrategy rda;
+    private LineItem[] lineItem;
     private Customer customer;
     private String receiptId;
 
-    public Receipt(ReceiptDataAccessStrategy receiptDataAccessStrategy, LineItem lineItem, Customer customer, String receiptId) {
-        this.receiptDataAccessStrategy = receiptDataAccessStrategy;
-        this.lineItem = lineItem;
-        this.customer = customer;
-        this.receiptId = receiptId;
+    public Receipt(String customerId, ReceiptDataAccessStrategy rda) {
+        customer = findCustomer(customerId);
     }
     
     public final String getReceiptId() {
@@ -39,8 +36,12 @@ public class Receipt {
         }
     }
     
+    public final Customer getCustomer(String customerId) {
+        return rda.findCustomer(customerId);
+    }
+    
     public final void addNewLineItemToReceipt() {
-        //make later
+        LineItem item = new LineItem(productId, quantity);
     }
     
         

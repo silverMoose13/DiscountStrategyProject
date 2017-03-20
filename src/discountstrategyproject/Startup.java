@@ -8,13 +8,13 @@ public class Startup {
     public static void main(String[] args) {
         
         PointOfSaleTerminal posTerminal = new PointOfSaleTerminal();
-        ReceiptDataAccessStrategy dataAccess = new InMemoryDataAccess();
+        ReceiptDataAccessStrategy rda = new InMemoryDataAccess();
         
         OutputStrategy outputOne = new ConsoleOutput();
         OutputStrategy outputTwo = new GuiOutput();
         
         //add new receipt(create) need database here too
-        posTerminal.createNewReceipt("001", dataAccess);
+        posTerminal.createNewReceipt("001", rda);
         
         //add a line item (repeat as necessary foreach loop to cycle through
         //the array one time (productId and quantity are the params)

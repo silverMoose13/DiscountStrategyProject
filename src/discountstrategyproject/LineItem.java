@@ -32,8 +32,6 @@ public class LineItem {
         this.product = product;
         this.quantity = quantity;
     }
-    
-    public LineItem() {}
 
     public final int getQuantity() {
         return quantity;
