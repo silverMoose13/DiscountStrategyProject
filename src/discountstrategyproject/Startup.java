@@ -19,7 +19,7 @@ public class Startup {
         //add a line item (repeat as necessary foreach loop to cycle through
         //the array one time (productId and quantity are the params)
         //this is the modification reponsibility of the PosTerminal
-        posTerminal.addItemToReceipt("10A", 1);
+        posTerminal.addLineItemToReceipt("10A", 1);
         
         //display the GUI receipt
         posTerminal.closeoutReceipt();

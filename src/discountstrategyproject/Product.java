@@ -48,12 +48,18 @@ public class Product {
         return retailPrice;
     }
 
+    //upper bound set to a realistic amount for Kohl's
     public final void setRetailPrice(double retailPrice) {
-        if (retailPrice <= 0) {
-            throw new IllegalArgumentException("Retail price must not be less than or equal to $0.00.");
+        if (retailPrice <= 0 || retailPrice > 25000) {
+            throw new IllegalArgumentException("Retail price must not be less than or equal to $0.00. It"
+                    + "may also not be greater than $25,000.00");
         } else {
         this.retailPrice = retailPrice;
         }
+    }
+    
+    public final DiscountStrategy getDiscountStrategy() {
+        return discount;
     }
     
     

@@ -14,13 +14,13 @@ package discountstrategyproject;
 
 public class Receipt {
     
-    private ReceiptDataAccessStrategy rda;
-    private LineItem[] lineItem;
+    private ReceiptDataAccessStrategy dataAccess;
+    private LineItem[] lineItems;
     private Customer customer;
     private String receiptId;
 
-    public Receipt(String customerId, ReceiptDataAccessStrategy rda) {
-        customer = findCustomer(customerId);
+    public Receipt(String customerId, ReceiptDataAccessStrategy dataAccess) {
+        customer = findCustomer(customerId, dataAccess);
     }
     
     public final String getReceiptId() {
@@ -36,17 +36,24 @@ public class Receipt {
         }
     }
     
-    public final Customer getCustomer(String customerId) {
-        return rda.findCustomer(customerId);
+    private final Customer findCustomer(String customerId, ReceiptDataAccessStrategy dataAccess) {
+        return dataAccess.findCustomer(customerId, dataAccess);
     }
     
-    public final void addNewLineItemToReceipt() {
-        LineItem item = new LineItem(productId, quantity);
+    //it is the receipts job to add the line item and store it
+    public final void addNewLineItemToReceipt(final String productId, int quantity) {
+        LineItem lineItem = new LineItem(productId, quantity, dataAccess);
+        addToArray(lineItem);
     }
     
-        
+    //in order to store it, it needs to be added to an array
     private void addToArray(final LineItem item) {
-        //build this later but this will go in this class
+        // needs validation
+        LineItem[] tempItems = new LineItem[lineItems.length + 1];
+        System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
+        tempItems[lineItems.length] = item;
+        lineItems = tempItems;
+        tempItems = null;
     }
 
 }

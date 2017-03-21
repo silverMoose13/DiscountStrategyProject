@@ -37,7 +37,7 @@ public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
     //customerId is the unique value amongst customers
     //customer Id is final since this won't change
     @Override
-    public final Customer findCustomer(final String customerId) {
+    public final Customer findCustomer(final String customerId, ReceiptDataAccessStrategy dataAccess) {
         //customer can pay cash or not be in the database which
         //is OK then it will be set as null.
         if (customerId == null || customerId.length() == 0) {
@@ -59,7 +59,7 @@ public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
     //productId is the unique value amongst products
     //productId is set to final since it won't change
     @Override
-    public final Product findProduct(final String productId) {
+    public final Product findProduct(final String productId, ReceiptDataAccessStrategy dataAccess) {
         if (productId == null || productId.length() == 0) {
             output.display("Product Id must not be null or have a length of 0"
                     + "characters.");

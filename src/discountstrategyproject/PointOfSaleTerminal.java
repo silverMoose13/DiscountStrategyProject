@@ -11,22 +11,23 @@ package discountstrategyproject;
 //Essentially this class needs to talk to the receipt class
 public class PointOfSaleTerminal {
 
+    private OutputStrategy output;
     private Receipt receipt;
 
-    public PointOfSaleTerminal(String customerId, ReceiptDataAccessStrategy rda) {
-        receipt = new Receipt(customerId, rda);
+    public PointOfSaleTerminal(OutputStrategy outputOne, OutputStrategy outputTwo) {
+        this.output = outputOne;
+        this.output = outputTwo;
     }
+    
+    public PointOfSaleTerminal() {}
 
-    public PointOfSaleTerminal() {
-    }
-
-    public final void createNewReceipt(String customerId, ReceiptDataAccessStrategy rda) {
+    public final void createNewReceipt(String customerId, ReceiptDataAccessStrategy dataAccess) {
         //increment the receipt id ++
-        receipt = new Receipt(customerId, rda);
+        receipt = new Receipt(customerId, dataAccess);
     }
 
-    public final void addItemToReceipt(String productId, int quantity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public final void addLineItemToReceipt(String productId, int quantity) {
+        receipt.addNewLineItemToReceipt(productId, quantity);
     }
 
     //Consider adding a formatStrategy for this receipt so that these aren't hardcoded in
