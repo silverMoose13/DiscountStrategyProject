@@ -53,7 +53,7 @@ public class LineItem {
         lineItemInformation += product.getRetailPrice() + "  ";
         lineItemInformation += quantity + "  ";
         lineItemInformation += getSubTotal() + "  ";
-        lineItemInformation += product.getDiscountStrategy().getDiscountAmount(quantity, product.getRetailPrice());
+        lineItemInformation += product.getDiscountAmount(quantity);
         
         return lineItemInformation;
     }
@@ -63,8 +63,10 @@ public class LineItem {
     }
 
     public final double getSubTotal() {
-        double subTotal = 0.00;
-        subTotal = product.getRetailPrice() * quantity;
-        return subTotal;
+        return product.getRetailPrice() * quantity;
+    }
+    
+    public final double getDiscountAmount(double retailPrice) {
+        return product.getDiscountStrategy().getDiscountAmount(quantity, retailPrice);
     }
 }

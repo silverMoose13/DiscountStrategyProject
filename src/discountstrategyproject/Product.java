@@ -62,6 +62,10 @@ public class Product {
         return discount;
     }
     
+    public final double getDiscountAmount(int quantity) {
+        return getDiscountStrategy().getDiscountAmount(quantity, getRetailPrice());
+    }
+    
     
     
 }
