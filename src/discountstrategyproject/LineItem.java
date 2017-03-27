@@ -25,6 +25,12 @@ public class LineItem {
         product = findProduct(productId, dataAccess);
         this.quantity = quantity;
     }
+    
+    public LineItem() {}
+    
+    public Product getProduct() {
+        return product;
+    }
 
     public final int getQuantity() {
         return quantity;

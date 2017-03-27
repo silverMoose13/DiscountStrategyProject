@@ -14,7 +14,7 @@ public class Startup {
         OutputStrategy outputTwo = new GuiOutput();
         
         //add new receipt(create) need database here too
-        posTerminal.createNewReceipt("001", rda);
+        posTerminal.createNewReceipt("001", rda, outputOne, outputTwo);
         
         //add a line item (repeat as necessary foreach loop to cycle through
         //the array one time (productId and quantity are the params)
@@ -22,10 +22,10 @@ public class Startup {
         posTerminal.addLineItemToReceipt("10A", 1);
         
         //display the GUI receipt
-        posTerminal.closeoutReceipt();
+        //posTerminal.closeoutReceipt();
         
         //display the Console receipt. Use Liskov sub Principle here
-        //outputOne
+        
         
         //repeat this process again (since there are two receipts as needed
         //by the spec

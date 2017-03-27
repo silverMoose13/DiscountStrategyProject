@@ -21,9 +21,10 @@ public class PointOfSaleTerminal {
     
     public PointOfSaleTerminal() {}
 
-    public final void createNewReceipt(String customerId, ReceiptDataAccessStrategy dataAccess) {
+    public final void createNewReceipt(String customerId, ReceiptDataAccessStrategy dataAccess,
+            OutputStrategy outputOne, OutputStrategy outputTwo) {
         //increment the receipt id ++
-        receipt = new Receipt(customerId, dataAccess);
+        receipt = new Receipt(customerId, dataAccess, outputOne, outputTwo);
     }
 
     public final void addLineItemToReceipt(String productId, int quantity) {
@@ -31,45 +32,8 @@ public class PointOfSaleTerminal {
     }
 
     //Consider adding a formatStrategy for this receipt so that these aren't hardcoded in
-    public final String closeoutReceipt() {
-        //use the appended string values instead. The other way does not work well
-
-        String receipt = "";
-
-        receipt += "Thank you for shopping at Kohls \n";
-        receipt += "Sold to: pass in customer name here \n";
-        receipt += "Receipt No.: pass in receipt number here \n\n";
-        receipt += "ID \tItem \tPrice \tQty \tSubtotal \tDiscount \n";
-        receipt += "------------------------------------------------------- \n";
-        receipt += "Line Item goes here";
-        //continue to add line items with a loop
-        receipt += "-------";
-        receipt += "Net Total: pass in calculate net total method here \n";
-        receipt += "Total Savings: pass in grandtotal - nettotal methods \n";
-        receipt += "Amount Due: pass in grand total method \n";
-
-        return receipt;
-
-        //I performed it this way because I wanted to make use of the String formatter
-        //later on
-//        outputStrategy.display("Thank you for shopping at Kohls \n");
-//        //this line will pass in the customer that is linked to the ID in the database
-//        //remember that this will be null if no match is found so have a quality
-//        //in the method that will allow for that
-//        outputStrategy.display("Sold to: \n");
-//        //create a receiptId that would increment here
-//        outputStrategy.display("Receipt No.: \n\n");
-//        outputStrategy.display("ID \tItem \tPrice \tQty \tSubtotal \tDiscount \n");
-//        outputStrategy.display("------------------------------------------------------- \n");
-//        //addItemToReceipt
-//        outputStrategy.display("Line Item goes here");
-//        outputStrategy.display("-------");
-//        
-//        //these three lines will make use of the formatter (f) so that the values can be 
-//        //rounded to the nearest decimal place. Convert these later
-//        outputStrategy.display("Net Total: \n");
-//        outputStrategy.display("Total Savings: \n");
-//        outputStrategy.display("Amount Due: \n");
+    public final String closeoutReceipt(ReceiptFormatStrategy format) {
+        return format.formatReceipt(receipt);
     }
 
 }

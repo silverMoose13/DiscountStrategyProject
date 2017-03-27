@@ -10,14 +10,30 @@ package discountstrategyproject;
 //Line item class (this will get the line item information ID, Item, Price, Qty, Subtotal, Discount
 public class Receipt {
 
+    private OutputStrategy outputOne;
+    private OutputStrategy outputTwo;
     private ReceiptDataAccessStrategy dataAccess;
     private LineItem[] lineItems;
     private Customer customer;
     private String receiptId;
 
-    public Receipt(String customerId, ReceiptDataAccessStrategy dataAccess) {
+    public Receipt(String customerId, ReceiptDataAccessStrategy dataAccess, 
+            OutputStrategy outputOne, OutputStrategy outputTwo) {
         customer = findCustomer(customerId, dataAccess);
         lineItems = new LineItem[0];
+        this.outputOne = outputOne;
+        this.outputTwo = outputTwo;
+    }
+    
+    //need a way to access the customer information
+    public Customer getCustomer() {
+        return customer;
+    }
+    
+    //need a way to access the product information
+    //we do this through the lineItem
+    public LineItem[] getLineItem() {
+        return lineItems;
     }
 
     public final String getReceiptId() {
@@ -52,7 +68,7 @@ public class Receipt {
         tempItems = null;
     }
 
-    private final double getNetTotal() {
+    public final double getNetTotal() {
         //set accumulator variable
         double netTotal = 0.00;
         //loop through the line items and their retail prices
@@ -62,7 +78,7 @@ public class Receipt {
         return netTotal;
     }
 
-    private final double getTotalSaved(double retailPrice) {
+    public final double getTotalSaved(double retailPrice) {
         //set accumulator variable
         double totalSaved = 0.00;
         //loop through the line items and their retail prices
@@ -72,9 +88,16 @@ public class Receipt {
         return totalSaved;
     }
 
-    private final double getGrandTotal(double retailPrice) {
+    public final double getGrandTotal(double retailPrice) {
         //just get the difference of the two methods above
         return getNetTotal() - getTotalSaved(retailPrice);
+    }
+    
+    public final void outputReceipt(ReceiptFormatStrategy format) {
+        //display the gui receipt
+        //outputOne.display(format.formatReceipt());
+        //display the console receipt
+        //outputTwo.display(format.formatReceipt());
     }
 
 }
