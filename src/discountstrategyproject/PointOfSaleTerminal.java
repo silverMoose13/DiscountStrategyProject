@@ -32,8 +32,8 @@ public class PointOfSaleTerminal {
     }
 
     //Consider adding a formatStrategy for this receipt so that these aren't hardcoded in
-    public final String closeoutReceipt(ReceiptFormatStrategy format) {
-        return format.formatReceipt(receipt);
+    public final void closeoutReceipt(ReceiptFormatStrategy format) {
+        receipt.outputReceipt(format);
     }
 
 }
