@@ -13,6 +13,9 @@ public class Product {
     private double retailPrice;
 
     public Product(String productId, String productName, double retailPrice, DiscountStrategy discount) {
+        this.productId = productId;
+        this.productName = productName;
+        this.retailPrice = retailPrice;
         this.discount = discount;
     }
 

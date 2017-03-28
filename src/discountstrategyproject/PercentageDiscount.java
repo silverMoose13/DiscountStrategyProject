@@ -9,10 +9,6 @@ public class PercentageDiscount implements DiscountStrategy {
     private double percentageOff;
 
     public PercentageDiscount(double percentageOff) {
-        if (percentageOff > 0.95 || percentageOff < 0.00) {
-            throw new IllegalArgumentException("Percentage off needs to be greater than 0% and cannot"
-                    + " exceed 95%.");
-        }
         this.percentageOff = percentageOff;
     }
 
