@@ -15,6 +15,8 @@ public class Startup {
         
         ReceiptFormatStrategy format = new ReceiptFormat();
         
+        //////////////Transaction #1//////////////
+        
         //add new receipt(create) need database here too
         posTerminal.createNewReceipt("001", dataAccess, outputOne, outputTwo);
         
@@ -29,8 +31,10 @@ public class Startup {
         //display the GUI receipt
         posTerminal.closeoutReceipt(format);
         
-        //repeat this process again (since there are two receipts as needed
-        //by the spec
+        
+        
+         //////////////Transaction #2//////////////
+        
         posTerminal.createNewReceipt("002", dataAccess, outputOne, outputTwo);
         
         //add a line item (repeat as necessary foreach loop to cycle through

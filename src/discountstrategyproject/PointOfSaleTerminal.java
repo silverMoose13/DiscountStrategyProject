@@ -11,23 +11,34 @@ package discountstrategyproject;
 //Essentially this class needs to talk to the receipt class
 public class PointOfSaleTerminal {
 
-    private OutputStrategy output;
+    private OutputStrategy outputOne;
+    private OutputStrategy outputTwo;
     private Receipt receipt;
 
-    public PointOfSaleTerminal(OutputStrategy outputOne, OutputStrategy outputTwo) {
-        this.output = outputOne;
-        this.output = outputTwo;
+    public PointOfSaleTerminal(OutputStrategy outputOne, OutputStrategy outputTwo, Receipt receipt) {
+        this.outputOne = outputOne;
+        this.outputTwo = outputTwo;
+        this.receipt = receipt;
     }
-    
-    public PointOfSaleTerminal() {}
+
+    public PointOfSaleTerminal() {
+    }
 
     public final void createNewReceipt(String customerId, ReceiptDataAccessStrategy dataAccess,
             OutputStrategy outputOne, OutputStrategy outputTwo) {
-        //increment the receipt id ++
+        if (customerId == null || customerId.length() == 0) {
+            throw new IllegalArgumentException("Error! Customer Id must not be null or have a length"
+                    + "equal to zero.");
+        }
         receipt = new Receipt(customerId, dataAccess, outputOne, outputTwo);
     }
 
     public final void addLineItemToReceipt(String productId, int quantity) {
+        if (productId == null || productId.isEmpty()) {
+            throw new IllegalArgumentException("Error! Product Id must not be null or empty.");
+        } else if (quantity < 1) {
+            throw new IllegalArgumentException("Error! Quantity must be at least 1.");
+        }
         receipt.addNewLineItemToReceipt(productId, quantity);
     }
 

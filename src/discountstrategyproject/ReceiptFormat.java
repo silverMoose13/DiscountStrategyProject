@@ -8,7 +8,6 @@ public class ReceiptFormat implements ReceiptFormatStrategy {
     
     LineItem lineItems = new LineItem();
     
-    
     @Override
     public final String formatReceipt(Receipt receipt) {
         //use the appended string values instead. The other way does not work well
@@ -24,10 +23,9 @@ public class ReceiptFormat implements ReceiptFormatStrategy {
         //receipt.getLineItem()
         
         buildReceipt.append("---------------------------------------------------\n\n");
-        buildReceipt.append("\t\t\tNet Total: ").append(receipt.getNetTotal()).append("\n");
-        buildReceipt.append("\t\t\tTotal Saved: ").append(receipt.getTotalSaved(lineItems.getProduct().getRetailPrice())).append("\n");;
-        buildReceipt.append("\t\t\tTotal Due: ").append(receipt.getGrandTotal(lineItems.getProduct().getRetailPrice())).append("\n");;
-        
+        buildReceipt.append("\t\t\tNet Total: $").append(receipt.getNetTotal()).append("\n");
+        buildReceipt.append("\t\t\tTotal Saved: $").append(receipt.getTotalSaved(lineItems.getProduct().getRetailPrice())).append("\n");;
+        buildReceipt.append("\t\t\tTotal Due: $").append(receipt.getGrandTotal(lineItems.getProduct().getRetailPrice())).append("\n");;
         
         return buildReceipt.toString();
     }

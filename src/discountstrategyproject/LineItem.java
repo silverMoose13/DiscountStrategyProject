@@ -25,9 +25,10 @@ public class LineItem {
         product = findProduct(productId, dataAccess);
         this.quantity = quantity;
     }
-    
-    public LineItem() {}
-    
+
+    public LineItem() {
+    }
+
     public Product getProduct() {
         return product;
     }
@@ -37,8 +38,8 @@ public class LineItem {
     }
 
     public final void setQuantity(int quantity) {
-        if (quantity <= 0) {
-            throw new IllegalArgumentException("Value must not be less than or equal to 0.");
+        if (quantity < 1) {
+            throw new IllegalArgumentException("Quantity needs to be at least 1.");
         }
         this.quantity = quantity;
     }
@@ -48,7 +49,7 @@ public class LineItem {
     private final Product findProduct(String productId, ReceiptDataAccessStrategy dataAccess) {
         return dataAccess.findProduct(productId, dataAccess);
     }
-    
+
     //improve this method in terms of formatting
     public final String getLineItemInformation() {
         //this will return the line of information. You can
@@ -60,19 +61,30 @@ public class LineItem {
         lineItemInformation += quantity + "  ";
         lineItemInformation += getSubTotal() + "  ";
         lineItemInformation += product.getDiscountAmount(quantity);
-        
+
         return lineItemInformation;
     }
 
     public final void addNewLineItem(String productId, int quantity) {
+        if (productId == null || productId.length() == 0) {
+            throw new IllegalArgumentException("Product ID must not be null or have a "
+                    + "length of 0 characters.");
+        }
+        if (quantity < 1) {
+            throw new IllegalArgumentException("Quantity needs to be at least 1.");
+        }
         findProduct(productId, dataAccess);
     }
 
     public final double getSubTotal() {
         return product.getRetailPrice() * quantity;
     }
-    
+
     public final double getDiscountAmount(double retailPrice) {
+        if (retailPrice <= 0 || retailPrice > 25000) {
+            throw new IllegalArgumentException("Retail price must not be less than or equal to $0.00. It"
+                    + "may also not be greater than $25,000.00");
+        }
         return product.getDiscountStrategy().getDiscountAmount(quantity, retailPrice);
     }
 }
