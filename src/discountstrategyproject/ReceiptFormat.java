@@ -7,6 +7,9 @@ import java.util.logging.Logger;
  *
  * @author agnas
  */
+
+//there are a few questions regarding this class in the try catch area.
+
 public class ReceiptFormat implements ReceiptFormatStrategy {
     
     LineItem lineItems = new LineItem();
