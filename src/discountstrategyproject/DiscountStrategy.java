@@ -9,5 +9,6 @@ package discountstrategyproject;
 //by the subclasses
 public interface DiscountStrategy {
     
-    public double getDiscountAmount(int quantity, double retailPrice);
+    public double getDiscountAmount(int quantity, double retailPrice) throws InvalidMinimumQuantityAmountException, 
+            NumberOutOfRangeException;
 }

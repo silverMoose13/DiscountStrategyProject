@@ -6,6 +6,8 @@ package discountstrategyproject;
  */
 public class ConsoleOutput implements OutputStrategy {
 
+    //when a custom exception class was applied, problems multiplied
+    
     @Override
     public final void display(String message) {
         if (message == null || message.isEmpty()) {

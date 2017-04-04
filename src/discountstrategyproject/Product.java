@@ -23,10 +23,9 @@ public class Product {
         return productId;
     }
 
-    public final void setProductId(String productId) {
+    public final void setProductId(String productId) throws NullOrEmptyException {
         if (productId == null || productId.length() == 0) {
-            throw new IllegalArgumentException("Product ID must not be null or have a "
-                    + "length of 0 characters.");
+            throw new NullOrEmptyException();
         }
         this.productId = productId;
     }
@@ -35,9 +34,9 @@ public class Product {
         return productName;
     }
 
-    public final void setProductName(String productName) {
+    public final void setProductName(String productName) throws NullOrEmptyException{
         if (productName == null || productName.isEmpty()) {
-            throw new IllegalArgumentException("Product name must not be null or empty.");
+            throw new NullOrEmptyException();
         }
         this.productName = productName;
     }
@@ -47,10 +46,9 @@ public class Product {
     }
 
     //upper bound set to a realistic amount for Kohl's
-    public final void setRetailPrice(double retailPrice) {
+    public final void setRetailPrice(double retailPrice) throws NumberOutOfRangeException {
         if (retailPrice <= 0 || retailPrice > 25000) {
-            throw new IllegalArgumentException("Retail price must not be less than or equal to $0.00. It"
-                    + "may also not be greater than $25,000.00");
+            throw new NumberOutOfRangeException();
         }
         this.retailPrice = retailPrice;
     }
@@ -59,9 +57,10 @@ public class Product {
         return discount;
     }
 
-    public final double getDiscountAmount(int quantity) {
+    public final double getDiscountAmount(int quantity) throws InvalidMinimumQuantityAmountException, 
+            NumberOutOfRangeException{
         if (quantity < 1) {
-            throw new IllegalArgumentException("Quantity needs to be at least 1.");
+            throw new InvalidMinimumQuantityAmountException();
         }
         return getDiscountStrategy().getDiscountAmount(quantity, getRetailPrice());
     }

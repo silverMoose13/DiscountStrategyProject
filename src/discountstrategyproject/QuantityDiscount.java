@@ -20,21 +20,23 @@ public class QuantityDiscount implements DiscountStrategy{
 
     //quantity minimum should be at least 2 because if it was just 1
     //this discount would not be unique.
-    public final void setMinimumQuantityNeededForDiscount(int minimumQuantityNeededForDiscount) {
+    public final void setMinimumQuantityNeededForDiscount(int minimumQuantityNeededForDiscount)
+    throws InvalidMinimumQuantityAmountException {
         if (minimumQuantityNeededForDiscount < 2) {
-            throw new IllegalArgumentException("Minimum quantity needs to be at least 2.");
+            //calls the 1 param exception
+            throw new InvalidMinimumQuantityAmountException("Minimum quantity needs to be at least 2.");
         }
         this.minimumQuantityNeededForDiscount = minimumQuantityNeededForDiscount;
     }
     
     @Override
-    public final double getDiscountAmount(int quantity, double retailPrice) {
+    public final double getDiscountAmount(int quantity, double retailPrice) throws
+            InvalidMinimumQuantityAmountException, NumberOutOfRangeException {
         if (quantity < 1) {
-            throw new IllegalArgumentException("Quantity needs to be at least 1.");
+            throw new InvalidMinimumQuantityAmountException();
         }
         if (retailPrice <= 0 || retailPrice > 25000) {
-            throw new IllegalArgumentException("Retail price must not be less than or equal to $0.00. It"
-                    + "may also not be greater than $25,000.00");
+            throw new NumberOutOfRangeException();
         }
         
         double discountAmount = 0;

@@ -1,5 +1,8 @@
 package discountstrategyproject;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author agnas
@@ -10,24 +13,39 @@ public class ReceiptFormat implements ReceiptFormatStrategy {
     
     @Override
     public final String formatReceipt(Receipt receipt) {
-        //use the appended string values instead. The other way does not work well
+        try {
+            //use the appended string values instead. The other way does not work well
+            
+            StringBuilder buildReceipt = new StringBuilder("");
+            buildReceipt.append("Thank you for shopping at Kohls! \n\n");
+            buildReceipt.append("Sold to: ").append(receipt.getCustomer().getCustomerName()).append("\n");
+            buildReceipt.append("Receipt No.: ").append(receipt.getReceiptId()).append("\n\n");
+            buildReceipt.append("ID \tItem \tPrice \tQty \tSubtotal \tDiscount \n");
+            buildReceipt.append("---------------------------------------------------\n\n");
+            
+            //for loop to go through items in the transactions
+            //receipt.getLineItem()
+            
+            buildReceipt.append("---------------------------------------------------\n\n");
+            buildReceipt.append("\t\t\tNet Total: $").append(receipt.getNetTotal()).append("\n");
+            buildReceipt.append("\t\t\tTotal Saved: $").append(receipt.getTotalSaved(lineItems.getProduct().getRetailPrice())).append("\n");;
+            buildReceipt.append("\t\t\tTotal Due: $").append(receipt.getGrandTotal(lineItems.getProduct().getRetailPrice())).append("\n");;
+            
+            return buildReceipt.toString();
         
-        StringBuilder buildReceipt = new StringBuilder("");
-        buildReceipt.append("Thank you for shopping at Kohls! \n\n");
-        buildReceipt.append("Sold to: ").append(receipt.getCustomer().getCustomerName()).append("\n");
-        buildReceipt.append("Receipt No.: ").append(receipt.getReceiptId()).append("\n\n");
-        buildReceipt.append("ID \tItem \tPrice \tQty \tSubtotal \tDiscount \n");
-        buildReceipt.append("---------------------------------------------------\n\n");
+        //this was the solution for the netbeans lightbulb. Not sure how to go about this otherwise
+        //with having 2 return statements.
+            
+        //also not sure what the logger imports are used for
         
-        //for loop to go through items in the transactions
-        //receipt.getLineItem()
-        
-        buildReceipt.append("---------------------------------------------------\n\n");
-        buildReceipt.append("\t\t\tNet Total: $").append(receipt.getNetTotal()).append("\n");
-        buildReceipt.append("\t\t\tTotal Saved: $").append(receipt.getTotalSaved(lineItems.getProduct().getRetailPrice())).append("\n");;
-        buildReceipt.append("\t\t\tTotal Due: $").append(receipt.getGrandTotal(lineItems.getProduct().getRetailPrice())).append("\n");;
-        
-        return buildReceipt.toString();
+        } catch (NumberOutOfRangeException ex) {
+            Logger.getLogger(ReceiptFormat.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidMinimumQuantityAmountException ex) {
+            Logger.getLogger(ReceiptFormat.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //is this a viable solution?
+        return null;
+
     }
     
     

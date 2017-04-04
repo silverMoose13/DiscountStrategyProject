@@ -5,7 +5,8 @@ package discountstrategyproject;
  * @author agnas
  */
 public class Startup {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NullOrLengthOfZeroException, NullOrEmptyException, 
+            InvalidMinimumQuantityAmountException {
         
         PointOfSaleTerminal posTerminal = new PointOfSaleTerminal();
         ReceiptDataAccessStrategy dataAccess = new InMemoryDataAccess();

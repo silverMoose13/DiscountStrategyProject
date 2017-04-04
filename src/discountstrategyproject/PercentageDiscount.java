@@ -16,22 +16,23 @@ public class PercentageDiscount implements DiscountStrategy {
         return percentageOff;
     }
 
-    public final void setPercentageOff(double percentageOff) {
+    public final void setPercentageOff(double percentageOff) throws NumberOutOfRangeException{
         if (percentageOff > 0.95 || percentageOff < 0.00) {
-            throw new IllegalArgumentException("Percentage off needs to be greater than 0% and cannot"
+            //slightly different version
+            throw new NumberOutOfRangeException("Percentage off needs to be greater than 0% and cannot"
                     + " exceed 95%.");
         }
         this.percentageOff = percentageOff;
     }
 
     @Override
-    public final double getDiscountAmount(int quantity, double retailPrice) {
+    public final double getDiscountAmount(int quantity, double retailPrice) throws InvalidMinimumQuantityAmountException, 
+            InvalidMinimumQuantityAmountException{
         if (quantity < 1) {
-            throw new IllegalArgumentException("Quantity needs to be at least 1.");
+            throw new InvalidMinimumQuantityAmountException();
         }
         if (retailPrice <= 0 || retailPrice > 25000) {
-            throw new IllegalArgumentException("Retail price must not be less than or equal to $0.00. It"
-                    + "may also not be greater than $25,000.00");
+            throw new InvalidMinimumQuantityAmountException();
         }
 
         return retailPrice * quantity * percentageOff;

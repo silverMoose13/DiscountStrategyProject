@@ -37,9 +37,9 @@ public class LineItem {
         return quantity;
     }
 
-    public final void setQuantity(int quantity) {
+    public final void setQuantity(int quantity) throws InvalidMinimumQuantityAmountException {
         if (quantity < 1) {
-            throw new IllegalArgumentException("Quantity needs to be at least 1.");
+            throw new InvalidMinimumQuantityAmountException();
         }
         this.quantity = quantity;
     }
@@ -51,7 +51,8 @@ public class LineItem {
     }
 
     //improve this method in terms of formatting
-    public final String getLineItemInformation() {
+    public final String getLineItemInformation() throws InvalidMinimumQuantityAmountException, 
+            NumberOutOfRangeException {
         //this will return the line of information. You can
         //append a string here and call in the methods needed
         String lineItemInformation = "";
@@ -65,13 +66,13 @@ public class LineItem {
         return lineItemInformation;
     }
 
-    public final void addNewLineItem(String productId, int quantity) {
+    public final void addNewLineItem(String productId, int quantity) throws NullOrLengthOfZeroException,
+            InvalidMinimumQuantityAmountException {
         if (productId == null || productId.length() == 0) {
-            throw new IllegalArgumentException("Product ID must not be null or have a "
-                    + "length of 0 characters.");
+            throw new NullOrLengthOfZeroException();
         }
         if (quantity < 1) {
-            throw new IllegalArgumentException("Quantity needs to be at least 1.");
+            throw new InvalidMinimumQuantityAmountException();
         }
         findProduct(productId, dataAccess);
     }
@@ -80,10 +81,10 @@ public class LineItem {
         return product.getRetailPrice() * quantity;
     }
 
-    public final double getDiscountAmount(double retailPrice) {
+    public final double getDiscountAmount(double retailPrice) throws NumberOutOfRangeException,
+            InvalidMinimumQuantityAmountException {
         if (retailPrice <= 0 || retailPrice > 25000) {
-            throw new IllegalArgumentException("Retail price must not be less than or equal to $0.00. It"
-                    + "may also not be greater than $25,000.00");
+            throw new NumberOutOfRangeException();
         }
         return product.getDiscountStrategy().getDiscountAmount(quantity, retailPrice);
     }

@@ -18,7 +18,7 @@ public class Receipt {
     private String receiptId;
 
     public Receipt(String customerId, ReceiptDataAccessStrategy dataAccess,
-            OutputStrategy outputOne, OutputStrategy outputTwo) {
+            OutputStrategy outputOne, OutputStrategy outputTwo) throws NullOrLengthOfZeroException {
         customer = findCustomer(customerId, dataAccess);
         lineItems = new LineItem[0];
         this.outputOne = outputOne;
@@ -40,37 +40,38 @@ public class Receipt {
         return receiptId;
     }
 
-    public final void setReceiptId(String receiptId) {
+    public final void setReceiptId(String receiptId) throws NullOrEmptyException {
         if (receiptId == null || receiptId.isEmpty()) {
-            throw new IllegalArgumentException("Value must not be null or empty.");
+            throw new NullOrEmptyException();
         } else {
             this.receiptId = receiptId;
         }
     }
 
-    private final Customer findCustomer(String customerId, ReceiptDataAccessStrategy dataAccess) {
+    private final Customer findCustomer(String customerId, ReceiptDataAccessStrategy dataAccess)
+            throws NullOrLengthOfZeroException {
         if (customerId == null || customerId.length() == 0) {
-            throw new IllegalArgumentException("Error! Customer Id must not be null or have a length"
-                    + "equal to zero.");
+            throw new NullOrLengthOfZeroException();
         }
         return dataAccess.findCustomer(customerId, dataAccess);
     }
 
     //it is the receipts job to add the line item and store it
-    public final void addNewLineItemToReceipt(final String productId, int quantity) {
+    public final void addNewLineItemToReceipt(final String productId, int quantity) throws NullOrEmptyException,
+            InvalidMinimumQuantityAmountException {
         if (productId == null || productId.isEmpty()) {
-            throw new IllegalArgumentException("Error! Product Id must not be null or empty.");
+            throw new NullOrEmptyException();
         } else if (quantity < 1) {
-            throw new IllegalArgumentException("Error! Quantity must be at least 1.");
+            throw new InvalidMinimumQuantityAmountException();
         }
         LineItem lineItem = new LineItem(productId, quantity, dataAccess);
         addToArray(lineItem);
     }
 
     //in order to store it, it needs to be added to an array
-    private final void addToArray(final LineItem item) {
+    private final void addToArray(final LineItem item) throws NullOrEmptyException {
         if (item == null) {
-            throw new IllegalArgumentException("Value must not be null.");
+            throw new NullOrEmptyException("Value must not be null.");
         }
         LineItem[] tempItems = new LineItem[lineItems.length + 1];
         System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
@@ -89,10 +90,10 @@ public class Receipt {
         return netTotal;
     }
 
-    public final double getTotalSaved(double retailPrice) {
+    public final double getTotalSaved(double retailPrice) throws NumberOutOfRangeException,
+            InvalidMinimumQuantityAmountException {
         if (retailPrice <= 0 || retailPrice > 25000) {
-            throw new IllegalArgumentException("Retail price must not be less than or equal to $0.00. It"
-                    + "may also not be greater than $25,000.00");
+            throw new NumberOutOfRangeException();
         }
         //set accumulator variable
         double totalSaved = 0.00;
@@ -103,16 +104,16 @@ public class Receipt {
         return totalSaved;
     }
 
-    public final double getGrandTotal(double retailPrice) {
+    public final double getGrandTotal(double retailPrice) throws NumberOutOfRangeException,
+            InvalidMinimumQuantityAmountException {
         if (retailPrice <= 0 || retailPrice > 25000) {
-            throw new IllegalArgumentException("Retail price must not be less than or equal to $0.00. It"
-                    + "may also not be greater than $25,000.00");
+            throw new NumberOutOfRangeException();
         }
         //just get the difference of the two methods above
         return getNetTotal() - getTotalSaved(retailPrice);
     }
 
-    public final void outputReceipt(ReceiptFormatStrategy format) {
+    public final void outputReceipt(ReceiptFormatStrategy format) throws NullOrEmptyException {
         //display the gui receipt
         outputOne.display(format.formatReceipt(this));
         //display the console receipt

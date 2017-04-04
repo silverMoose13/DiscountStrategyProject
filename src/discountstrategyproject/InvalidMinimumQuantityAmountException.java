@@ -1,0 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package discountstrategyproject;
+
+/**
+ *
+ * @author Aaron
+ */
+public class InvalidMinimumQuantityAmountException extends Exception {
+
+    public static final String MESSAGE = "Quantity needs to be at least 1.";
+    
+    public InvalidMinimumQuantityAmountException() {
+        super(MESSAGE);
+    }
+
+    public InvalidMinimumQuantityAmountException(String message) {
+        super(message);
+    }
+
+    public InvalidMinimumQuantityAmountException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public InvalidMinimumQuantityAmountException(Throwable cause) {
+        super(cause);
+    }
+    
+}

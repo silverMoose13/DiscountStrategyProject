@@ -25,25 +25,25 @@ public class PointOfSaleTerminal {
     }
 
     public final void createNewReceipt(String customerId, ReceiptDataAccessStrategy dataAccess,
-            OutputStrategy outputOne, OutputStrategy outputTwo) {
+            OutputStrategy outputOne, OutputStrategy outputTwo) throws NullOrLengthOfZeroException {
         if (customerId == null || customerId.length() == 0) {
-            throw new IllegalArgumentException("Error! Customer Id must not be null or have a length"
-                    + "equal to zero.");
+            throw new NullOrLengthOfZeroException();
         }
         receipt = new Receipt(customerId, dataAccess, outputOne, outputTwo);
     }
 
-    public final void addLineItemToReceipt(String productId, int quantity) {
+    public final void addLineItemToReceipt(String productId, int quantity) throws NullOrEmptyException, 
+         InvalidMinimumQuantityAmountException {
         if (productId == null || productId.isEmpty()) {
-            throw new IllegalArgumentException("Error! Product Id must not be null or empty.");
+            throw new NullOrEmptyException();
         } else if (quantity < 1) {
-            throw new IllegalArgumentException("Error! Quantity must be at least 1.");
+            throw new InvalidMinimumQuantityAmountException();
         }
         receipt.addNewLineItemToReceipt(productId, quantity);
     }
 
     //Consider adding a formatStrategy for this receipt so that these aren't hardcoded in
-    public final void closeoutReceipt(ReceiptFormatStrategy format) {
+    public final void closeoutReceipt(ReceiptFormatStrategy format) throws NullOrEmptyException {
         receipt.outputReceipt(format);
     }
 

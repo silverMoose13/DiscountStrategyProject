@@ -37,10 +37,9 @@ public class Customer {
         return customerName;
     }
 
-    public final void setCustomerName(String customerName) {
+    public final void setCustomerName(String customerName) throws NullOrLengthOfZeroException {
         if (customerName == null || customerName.length() == 0) {
-            throw new IllegalArgumentException("Customer name must not be null or have a "
-                    + "length of 0 characters.");
+            throw new NullOrLengthOfZeroException();
         } else {
         this.customerName = customerName;
         }

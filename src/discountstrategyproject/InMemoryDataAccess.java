@@ -40,6 +40,9 @@ public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
     public final Customer findCustomer(final String customerId, ReceiptDataAccessStrategy dataAccess) {
         //customer can pay cash or not be in the database which
         //is OK then it will be set as null.
+        
+        //we do not want to throw an argument exception here bc it will set it as null
+        //if it follows this path
         if (customerId == null || customerId.length() == 0) {
             output.display("Customer Id must not be null or have a length of 0"
                     + "characters.");
@@ -60,6 +63,9 @@ public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
     //productId is set to final since it won't change
     @Override
     public final Product findProduct(final String productId, ReceiptDataAccessStrategy dataAccess) {
+        
+        //we do not want to throw an argument exception here bc it will set it as null
+        //if it follows this path
         if (productId == null || productId.length() == 0) {
             output.display("Product Id must not be null or have a length of 0"
                     + "characters.");
