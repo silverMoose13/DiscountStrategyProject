@@ -13,11 +13,11 @@ public class NullOrEmptyException extends Exception {
     }
 
     public NullOrEmptyException(String message) {
-        super(message);
+        super(MESSAGE);
     }
 
     public NullOrEmptyException(String message, Throwable cause) {
-        super(message, cause);
+        super(MESSAGE, cause);
     }
 
     public NullOrEmptyException(Throwable cause) {

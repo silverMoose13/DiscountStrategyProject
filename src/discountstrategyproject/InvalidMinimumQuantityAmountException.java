@@ -18,11 +18,11 @@ public class InvalidMinimumQuantityAmountException extends Exception {
     }
 
     public InvalidMinimumQuantityAmountException(String message) {
-        super(message);
+        super(MESSAGE);
     }
 
     public InvalidMinimumQuantityAmountException(String message, Throwable cause) {
-        super(message, cause);
+        super(MESSAGE, cause);
     }
 
     public InvalidMinimumQuantityAmountException(Throwable cause) {
