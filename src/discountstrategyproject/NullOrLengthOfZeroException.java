@@ -14,11 +14,11 @@ public class NullOrLengthOfZeroException extends IllegalArgumentException {
     }
 
     public NullOrLengthOfZeroException(String message) {
-        super(message);
+        super(MESSAGE);
     }
 
     public NullOrLengthOfZeroException(String message, Throwable cause) {
-        super(message, cause);
+        super(MESSAGE, cause);
     }
 
     public NullOrLengthOfZeroException(Throwable cause) {

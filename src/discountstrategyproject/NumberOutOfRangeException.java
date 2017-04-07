@@ -14,11 +14,11 @@ public class NumberOutOfRangeException extends IllegalArgumentException {
     }
 
     public NumberOutOfRangeException(String message) {
-        super(message);
+        super(MESSAGE);
     }
 
     public NumberOutOfRangeException(String message, Throwable cause) {
-        super(message, cause);
+        super(MESSAGE, cause);
     }
 
     public NumberOutOfRangeException(Throwable cause) {
