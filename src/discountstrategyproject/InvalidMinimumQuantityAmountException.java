@@ -9,7 +9,7 @@ package discountstrategyproject;
  *
  * @author Aaron
  */
-public class InvalidMinimumQuantityAmountException extends Exception {
+public class InvalidMinimumQuantityAmountException extends IllegalArgumentException {
 
     public static final String MESSAGE = "Quantity needs to be at least 1.";
     

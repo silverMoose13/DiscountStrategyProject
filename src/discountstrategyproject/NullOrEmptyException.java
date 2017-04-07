@@ -4,7 +4,7 @@ package discountstrategyproject;
  *
  * @author Aaron
  */
-public class NullOrEmptyException extends Exception {
+public class NullOrEmptyException extends IllegalArgumentException {
 
     private static final String MESSAGE = "Error! Value must not be null or empty.";
     

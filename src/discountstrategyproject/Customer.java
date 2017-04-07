@@ -18,6 +18,9 @@ public class Customer {
         this.customerName = customerName;
     }
 
+    public Customer() {
+    }
+
     public final String getCustomerId() {
         return customerId;
     }
@@ -40,9 +43,8 @@ public class Customer {
     public final void setCustomerName(String customerName) throws NullOrLengthOfZeroException {
         if (customerName == null || customerName.length() == 0) {
             throw new NullOrLengthOfZeroException();
-        } else {
-        this.customerName = customerName;
         }
+        this.customerName = customerName;
     }
     
 }

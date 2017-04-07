@@ -9,6 +9,10 @@ package discountstrategyproject;
 //2) modifying the receipt
 //3) signaling the end of the transaction by generating the final receipt in two dif output forms
 //Essentially this class needs to talk to the receipt class
+
+//this class needs to have the try catch to handle the exceptions since it directly 
+//talks to the output class (don't just put it in the output class, pick a class that
+//talks to it
 public class PointOfSaleTerminal {
 
     private OutputStrategy outputOne;

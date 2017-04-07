@@ -18,14 +18,16 @@ public class Product {
         this.retailPrice = retailPrice;
         this.discount = discount;
     }
+    
+    public Product() {}
 
     public final String getProductId() {
         return productId;
     }
 
-    public final void setProductId(String productId) throws NullOrEmptyException {
+    public final void setProductId(String productId) throws NullOrLengthOfZeroException {
         if (productId == null || productId.length() == 0) {
-            throw new NullOrEmptyException();
+            throw new NullOrLengthOfZeroException();
         }
         this.productId = productId;
     }
