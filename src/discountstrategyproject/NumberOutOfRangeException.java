@@ -6,8 +6,7 @@ package discountstrategyproject;
  */
 public class NumberOutOfRangeException extends IllegalArgumentException {
 
-    private static final String MESSAGE = "Retail price must not be less than or equal to $0.00. It"
-                    + "may also not be greater than $25,000.00";
+    private static final String MESSAGE = "Value is out of the permitted range of numbers.";
     
     public NumberOutOfRangeException() {
         super(MESSAGE);

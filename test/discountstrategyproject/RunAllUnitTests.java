@@ -15,7 +15,8 @@ import org.junit.runners.Suite;
  * @author agnas
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({discountstrategyproject.CustomerTest.class, discountstrategyproject.ProductTest.class})
+@Suite.SuiteClasses({discountstrategyproject.CustomerTest.class, discountstrategyproject.ProductTest.class,
+discountstrategyproject.FlatAmountDiscountTest.class})
 public class RunAllUnitTests {
 
     @Before

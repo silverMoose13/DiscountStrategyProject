@@ -11,6 +11,8 @@ public class FlatAmountDiscount implements DiscountStrategy {
     public FlatAmountDiscount(double flatAmountOff) {
         this.flatAmountOff = flatAmountOff;
     }
+    
+    public FlatAmountDiscount() {}
 
     public final double getFlatAmountOff() {
         return flatAmountOff;
