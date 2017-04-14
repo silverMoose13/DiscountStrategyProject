@@ -62,3 +62,9 @@ public class CustomerTest {
     }
 
 }
+
+//expected is only used when you are testing a numeric result
+
+//if it returns anything other than void you must test what you are getting what you expect
+
+//in a validation strategy object try to compact duplicate if logic that keeps being used over and over again
