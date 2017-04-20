@@ -47,9 +47,12 @@ public class FlatAmountDiscountTest {
             -0.01, 0.00, 2000.01
         };
 
+        //the try needs to go inside the for loop
         try {
             for (int index = 0; index < invalidFlatAmountOff.length; index++) {
                 discount.setFlatAmountOff(invalidFlatAmountOff[index]);
+                //don't forget to add the fail here
+                fail("The test failed.");
             }
         } catch (NumberOutOfRangeException e) {
             // success
@@ -129,3 +132,15 @@ public class FlatAmountDiscountTest {
         }
     }
 }
+
+//////////////////////////////////
+////////Notes from Code Review////
+//////////////////////////////////
+
+//make sure you include assertEqual methods to compare the output vs an expected value (currently
+//all that was being tested was valid input values and output is super important to test)
+//example: flatAmount off expected should equal flatAmount actual
+//assertEquals(expected, actual, (here you need error range for numbers if the datatypes aren't the same, ex: 0.001)
+
+//ensure you have a fail("message here")
+//try catch should be inside the for loop otherwise the statements will never be reached
