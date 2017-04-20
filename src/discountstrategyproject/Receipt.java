@@ -1,5 +1,9 @@
 package discountstrategyproject;
 
+import edu.wctc.amg.date.DateTimeFormatterStrategy;
+import edu.wctc.amg.date.DateUtilities;
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Aaron
@@ -16,13 +20,16 @@ public class Receipt {
     private LineItem[] lineItems;
     private Customer customer;
     private String receiptId;
+    private DateUtilities utility;
+    private DateTimeFormatterStrategy formatter;
 
-    public Receipt(String customerId, ReceiptDataAccessStrategy dataAccess,
+    public Receipt(String customerId, ReceiptDataAccessStrategy dataAccess, DateUtilities utility, 
             OutputStrategy outputOne, OutputStrategy outputTwo) throws NullOrLengthOfZeroException {
         customer = findCustomer(customerId, dataAccess);
         lineItems = new LineItem[0];
         this.outputOne = outputOne;
         this.outputTwo = outputTwo;
+        this.utility = utility;
     }
 
     //need a way to access the customer information
@@ -118,6 +125,11 @@ public class Receipt {
         outputOne.display(format.formatReceipt(this));
         //display the console receipt
         outputTwo.display(format.formatReceipt(this));
+    }
+    
+    public final String getFormattedDateAndTimeOfReceipt(LocalDateTime dateAndTime, DateTimeFormatterStrategy formatter) {
+        String formattedDateAndTime = utility.getFormattedStringFromALocalDateTimeObject(dateAndTime, formatter );
+        return formattedDateAndTime;
     }
 
 }

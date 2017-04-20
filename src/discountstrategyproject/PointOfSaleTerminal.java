@@ -1,5 +1,7 @@
 package discountstrategyproject;
 
+import edu.wctc.amg.date.DateUtilities;
+
 /**
  *
  * @author Aaron
@@ -28,12 +30,12 @@ public class PointOfSaleTerminal {
     public PointOfSaleTerminal() {
     }
 
-    public final void createNewReceipt(String customerId, ReceiptDataAccessStrategy dataAccess,
+    public final void createNewReceipt(String customerId, ReceiptDataAccessStrategy dataAccess, DateUtilities utility,
             OutputStrategy outputOne, OutputStrategy outputTwo) throws NullOrLengthOfZeroException {
         if (customerId == null || customerId.length() == 0) {
             throw new NullOrLengthOfZeroException();
         }
-        receipt = new Receipt(customerId, dataAccess, outputOne, outputTwo);
+        receipt = new Receipt(customerId, dataAccess, utility, outputOne, outputTwo);
     }
 
     public final void addLineItemToReceipt(String productId, int quantity) throws NullOrEmptyException, 

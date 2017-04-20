@@ -1,5 +1,7 @@
 package discountstrategyproject;
 
+import edu.wctc.amg.date.DateUtilities;
+
 /**
  *
  * @author agnas
@@ -10,6 +12,7 @@ public class Startup {
         
         PointOfSaleTerminal posTerminal = new PointOfSaleTerminal();
         ReceiptDataAccessStrategy dataAccess = new InMemoryDataAccess();
+        //DateUtilities utility = new DateUtilities(localDateTimeObject, formatter);
         
         OutputStrategy outputOne = new ConsoleOutput();
         OutputStrategy outputTwo = new GuiOutput();
@@ -19,7 +22,7 @@ public class Startup {
         //////////////Transaction #1//////////////
         
         //add new receipt(create) need database here too
-        posTerminal.createNewReceipt("001", dataAccess, outputOne, outputTwo);
+//       posTerminal.createNewReceipt("001", dataAccess, utility, outputOne, outputTwo);
         
         //add a line item (repeat as necessary foreach loop to cycle through
         //the array one time (productId and quantity are the params)
@@ -36,7 +39,7 @@ public class Startup {
         
          //////////////Transaction #2//////////////
         
-        posTerminal.createNewReceipt("002", dataAccess, outputOne, outputTwo);
+        //posTerminal.createNewReceipt("002", dataAccess, utility, outputOne, outputTwo);
         
         //add a line item (repeat as necessary foreach loop to cycle through
         //the array one time (productId and quantity are the params)
